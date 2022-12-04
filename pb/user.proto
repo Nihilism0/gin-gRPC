@@ -1,0 +1,21 @@
+syntax = "proto3";  // 版本声明
+package gingRPC; // 包名，包名可以避免对message类型之间的名字冲突，同名的message可以通过package进行区分
+option go_package = "/proto"; // 生成的go文件的package名（基于一定规则生成）
+
+
+message UserResp{
+  bool OK = 1;
+}
+
+message UserReq{
+  string UserName = 1;
+  string PassWord = 2;
+}
+
+service Login{
+  rpc Login(UserReq) returns (UserResp){}
+}
+
+service Register{
+  rpc Register(UserReq) returns (UserResp){}
+}
